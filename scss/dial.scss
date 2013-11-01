@@ -1,0 +1,78 @@
+/*
+	Reference Styling for a dial for setting a rotation property
+*/
+@media all {
+	@import "compass/css3";
+	@import "compass/utilities";
+	/*
+		dial
+	*/
+	.dial {
+		margin : 0;
+		padding : 0;
+		overflow : hidden;
+		position : relative;
+		width : 100%;
+		*, *:before, *:after {
+			@include box-sizing(border-box);
+		}
+		img {
+			@include transition-property(opacity);
+			@include transition-duration(500ms);
+			height : auto;
+			left : 0;
+			top : 0;
+			width : 100%;
+			&.dial-active {
+				@include opacity(1);
+				position : relative;
+				z-index : 20;
+			}
+			&.dial-passive {
+				@include opacity(0);
+				@include transition-delay(500ms);
+				position : absolute;
+				z-index : 10;
+			}
+		}
+		.dial-face {
+			@include border-radius(50%);
+			background-color : rgba(0, 0, 0, 0.7);
+			background-color : #000\9;
+			border : solid 4px #fff;
+			bottom : 10px;
+			cursor : pointer;
+			position : absolute;
+			right : 10px;
+			height : 128px;
+			width : 128px;
+			z-index : 30;
+			.dial-hand {
+				@include border-radius(50%);
+				background-color : #fff;
+				height : 24px;
+				left : 50%;
+				margin : -12px;
+				width : 24px;
+				position : absolute;
+				top : 0%;
+			}
+			.dial-hub {
+				@include border-radius(50%);
+				background-color : #fff;
+				height : 64px;
+				left : 50%;
+				margin : -32px;
+				position : absolute;
+				top : 50%;
+				width : 64px;
+			}
+		}
+	}
+}
+@media (min-width: 1200px) {}
+@media (min-width: 980px) and (max-width: 1199px) {}
+@media (min-width: 768px) and (max-width: 979px) {}
+@media (max-width: 767px) {}
+@media (max-width: 480px) {}
+@media print {}
