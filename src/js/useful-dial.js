@@ -40,6 +40,8 @@
 			this.prepareDial();
 			// initial redraw
 			this.rotate(this.cfg.rotation || this.rotation);
+			// disable the start function so it can't be started twice
+			this.start = function () {};
 		};
 		this.update = function () {
 			// update the images
@@ -140,6 +142,8 @@
 			// trigger a redraw
 			this.update();
 		};
+		// go
+		this.start();
 	};
 
 }(window.useful = window.useful || {}));

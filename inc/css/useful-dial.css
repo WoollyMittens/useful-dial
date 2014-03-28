@@ -5,6 +5,7 @@
   /*
   	dial
   */
+  /* line 10, ../../src/scss/useful-dial.scss */
   .dial {
     margin: 0;
     padding: 0;
@@ -12,11 +13,13 @@
     position: relative;
     width: 100%;
   }
+  /* line 16, ../../src/scss/useful-dial.scss */
   .dial *, .dial *:before, .dial *:after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+  /* line 19, ../../src/scss/useful-dial.scss */
   .dial img {
     -webkit-transition-property: opacity;
     -moz-transition-property: opacity;
@@ -31,12 +34,14 @@
     top: 0;
     width: 100%;
   }
+  /* line 26, ../../src/scss/useful-dial.scss */
   .dial img.dial-active {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
     position: relative;
     z-index: 20;
   }
+  /* line 31, ../../src/scss/useful-dial.scss */
   .dial img.dial-passive {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
@@ -47,6 +52,7 @@
     position: absolute;
     z-index: 10;
   }
+  /* line 38, ../../src/scss/useful-dial.scss */
   .dial .dial-face {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -64,6 +70,7 @@
     width: 128px;
     z-index: 30;
   }
+  /* line 50, ../../src/scss/useful-dial.scss */
   .dial .dial-face .dial-hand {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -78,6 +85,7 @@
     position: absolute;
     top: 0%;
   }
+  /* line 60, ../../src/scss/useful-dial.scss */
   .dial .dial-face .dial-hub {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
