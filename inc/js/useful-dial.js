@@ -378,7 +378,7 @@
 					center.x = target.offsetWidth / 2;
 					center.y = target.offsetHeight / 2;
 					// determine the relative rotation from the position
-					context.angle = Math.atan2((interaction.y - scrolled.y - center.y), (interaction.x - scrolled.x - center.x));
+					context.angle = Math.atan2((interaction.y - center.y), (interaction.x - center.x));
 					context.rotation = (context.angle) ? context.angle * 180 / Math.PI : 270;
 					context.rotation = (context.rotation < 0) ? context.rotation + 360 : context.rotation;
 					// cancel any dragging shenanigans
