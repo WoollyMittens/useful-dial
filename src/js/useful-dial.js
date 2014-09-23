@@ -4,15 +4,12 @@
 
 	License:
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
-
-	Prerequisites:
-	<!--[if IE]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<![endif]-->
 */
 
-(function (useful) {
+// public object
+var useful = useful || {};
+
+(function(){
 
 	// invoke strict mode
 	"use strict";
@@ -146,4 +143,9 @@
 		this.start();
 	};
 
-}(window.useful = window.useful || {}));
+	// return as a require.js module
+	if (typeof module !== 'undefined') {
+		exports = module.exports = useful.Dial;
+	}
+
+})();
