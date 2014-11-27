@@ -26,7 +26,7 @@
 }
 /* line 22, ../../src/scss/useful-dial.scss */
 .dial img.dial-active {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
   position: relative;
   z-index: 20;
@@ -42,10 +42,9 @@
 }
 /* line 34, ../../src/scss/useful-dial.scss */
 .dial .dial-face {
-  -o-border-radius: 50%;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.7);
-  background-color: black \9;
+  background-color: #000 \9;
   border: solid 4px #fff;
   bottom: 10px;
   cursor: pointer;
@@ -57,7 +56,6 @@
 }
 /* line 46, ../../src/scss/useful-dial.scss */
 .dial .dial-face .dial-hand {
-  -o-border-radius: 50%;
   border-radius: 50%;
   background-color: #fff;
   height: 24px;
@@ -69,7 +67,6 @@
 }
 /* line 56, ../../src/scss/useful-dial.scss */
 .dial .dial-face .dial-hub {
-  -o-border-radius: 50%;
   border-radius: 50%;
   background-color: #fff;
   height: 64px;

@@ -28,10 +28,9 @@ To enable the use of HTML5 tags in Internet Explorer 8 and lower, include *html5
 
 ## How to start the script
 
-This is the safest way of starting the script, but allows for only one target element at a time.
-
 ```javascript
-var dial = new useful.Dial( document.getElementById('exampleDial'), {
+var dial = new useful.Dial().init({
+	'element' : document.getElementById('exampleDial'),
 	'offset' : 13,
 	'invert' : true,
 	'radius' : 0.77,

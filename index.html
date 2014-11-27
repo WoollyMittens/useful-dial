@@ -51,7 +51,8 @@
 				<script>
 				//<!--
 					// create new instances of the script
-					var exampleDial = new useful.Dial( document.getElementById('exampleDial'), {
+					var exampleDial = new useful.Dial().init({
+						'element' : document.getElementById('exampleDial'),
 						'offset' : 3,
 						'invert' : false,
 						'radius' : 0.77,
