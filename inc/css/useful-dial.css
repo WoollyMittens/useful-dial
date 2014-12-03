@@ -15,9 +15,7 @@
 }
 /* line 15, ../../src/scss/useful-dial.scss */
 .dial img {
-  -webkit-transition-property: opacity;
   transition-property: opacity;
-  -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
   height: auto;
   left: 0;
@@ -35,7 +33,6 @@
 .dial img.dial-passive {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
-  -webkit-transition-delay: 500ms;
   transition-delay: 500ms;
   position: absolute;
   z-index: 10;
