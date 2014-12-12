@@ -279,11 +279,11 @@ var useful = useful || {};
 })();
 
 /*
-	Source:
-	van Creij, Maurice (2014). "useful.positions.js: A library of useful functions to ease working with screen positions.", version 20141127, http://www.woollymittens.nl/.
+Source:
+van Creij, Maurice (2014). "useful.positions.js: A library of useful functions to ease working with screen positions.", version 20141127, http://www.woollymittens.nl/.
 
-	License:
-	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
+License:
+This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 */
 
 // public object
@@ -325,15 +325,15 @@ var useful = useful || {};
 				position.y = parent.scrollTop;
 			} else {
 				position.x = (window.pageXOffset) ?
-					window.pageXOffset :
-					(document.documentElement) ?
-						document.documentElement.scrollLeft :
-						document.body.scrollLeft;
+				window.pageXOffset :
+				(document.documentElement) ?
+				document.documentElement.scrollLeft :
+				document.body.scrollLeft;
 				position.y = (window.pageYOffset) ?
-					window.pageYOffset :
-					(document.documentElement) ?
-						document.documentElement.scrollTop :
-						document.body.scrollTop;
+				window.pageYOffset :
+				(document.documentElement) ?
+				document.documentElement.scrollTop :
+				document.body.scrollTop;
 			}
 			// return the object
 			return position;
@@ -402,16 +402,15 @@ var useful = useful || {};
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 */
 
-// create the constructor if needed
+// create the global object if needed
 var useful = useful || {};
-useful.Dial = useful.Dial || function () {};
 
-// extend the constructor
-useful.Dial.prototype.init = function (cfg) {
-	// properties
+// extend the global object
+useful.Dial = function () {
+
+	// PROPERTIES
+
 	"use strict";
-	this.cfg = cfg;
-	this.obj = cfg.element;
 	this.angle = null;
 	this.rotation = 0;
 	this.frames = null;
@@ -420,27 +419,34 @@ useful.Dial.prototype.init = function (cfg) {
 	this.hand = null;
 	this.cover = null;
 	this.interaction = false;
-	// methods
-	this.start = function () {
+
+	// METHODS
+
+	this.init = function (config) {
+		// store the configuration
+		this.config = config;
+		this.element = config.element;
 		// gather up the image frames
-		this.frames = this.obj.getElementsByTagName('img');
+		this.frames = this.element.getElementsByTagName('img');
 		// check the onrotation handler
-		this.cfg.onrotate = this.cfg.onrotate || function () {};
+		this.config.onrotate = this.config.onrotate || function () {};
 		// construct the dial
 		this.prepareDial();
 		// initial redraw
-		this.rotate(this.cfg.rotation || this.rotation);
-		// disable the start function so it can't be started twice
-		this.init = function () {};
+		this.rotate(this.config.rotation || this.rotation);
+		// return the object
+		return this;
 	};
+
 	this.update = function () {
 		// update the images
 		this.redrawImages();
 		// update the dial
 		this.redrawDial();
 		// run the change handler
-		this.cfg.onrotate(this.rotation);
+		this.config.onrotate(this.rotation);
 	};
+
 	this.redrawImages = function () {
 		var a, b, index;
 		// for all images
@@ -449,12 +455,13 @@ useful.Dial.prototype.init = function (cfg) {
 			this.frames[a].className = 'dial-passive';
 		}
 		// show the active frame
-		index = Math.round(this.rotation / 360 * (this.frames.length - 1)) + this.cfg.offset;
-		if (this.cfg.invert) { index = this.frames.length - 1 - index; }
+		index = Math.round(this.rotation / 360 * (this.frames.length - 1)) + this.config.offset;
+		if (this.config.invert) { index = this.frames.length - 1 - index; }
 		if (index < 0) { index += this.frames.length; }
 		if (index >= this.frames.length) { index -= this.frames.length; }
 		if (this.frames[index]) { this.frames[index].className = 'dial-active'; }
 	};
+
 	this.prepareDial = function () {
 		// create a container
 		this.face = document.createElement('div');
@@ -468,7 +475,7 @@ useful.Dial.prototype.init = function (cfg) {
 		// put together the parts
 		this.face.appendChild(this.hub);
 		this.face.appendChild(this.hand);
-		this.obj.appendChild(this.face);
+		this.element.appendChild(this.face);
 		// add the mouse event handlers
 		this.face.addEventListener('mousedown', this.onStart());
 		this.face.addEventListener('mousemove', this.onMove(this.face));
@@ -478,29 +485,33 @@ useful.Dial.prototype.init = function (cfg) {
 		this.face.addEventListener('touchmove', this.onMove(this.face));
 		window.addEventListener('touchend', this.onEnd());
 	};
+
 	this.redrawDial = function () {
 		// determine the horizontal and vertical component of the rotation
-		var horizontal = Math.cos(this.angle) * 50 * this.cfg.radius + 50;
-		var vertical = Math.sin(this.angle) * 50 * this.cfg.radius + 50;
+		var horizontal = Math.cos(this.angle) * 50 * this.config.radius + 50;
+		var vertical = Math.sin(this.angle) * 50 * this.config.radius + 50;
 		// position the dial accordion to the rotation
 		this.hand.style.left = horizontal + '%';
 		this.hand.style.top = vertical + '%';
 	};
-	// events
+
+	// EVENTS
+
 	this.onStart = function () {
 		var context = this;
 		return function (event) {
 			// note the start of the interaction
-			context.cfg.interaction = true;
+			context.config.interaction = true;
 			event.preventDefault();
 		};
 	};
+
 	this.onMove = function (target) {
 		var context = this;
 		return function (event) {
 			var interaction = {}, center = {}, scrolled = {};
 			// if there's interaction
-			if (context.cfg.interaction) {
+			if (context.config.interaction) {
 				// measure the positions
 				interaction = useful.positions.cursor(event, target);
 				scrolled = useful.positions.document();
@@ -517,14 +528,17 @@ useful.Dial.prototype.init = function (cfg) {
 			}
 		};
 	};
+
 	this.onEnd = function () {
 		var context = this;
 		return function (event) {
 			// note the end of the interaction
-			context.cfg.interaction = false;
+			context.config.interaction = false;
 		};
 	};
-	// external API
+
+	// EXTERNAL
+
 	this.rotate = function (rotation) {
 		// override the rotation
 		this.rotation = rotation;
@@ -532,9 +546,6 @@ useful.Dial.prototype.init = function (cfg) {
 		// trigger a redraw
 		this.update();
 	};
-	// go
-	this.start();
-	return this;
 };
 
 // return as a require.js module
