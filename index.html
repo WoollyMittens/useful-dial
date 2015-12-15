@@ -1,69 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8" />
-		<title>useful-dial.js: Rotating Dial</title>
-		<style>
-			html { font-family:Sans-Serif; font-size:75%; height:100%; }
-			body { _height:100%; line-height:180%; margin:0; min-height:100%; padding:1%; }
-			*, *:before, *:after { box-sizing:border-box; -moz-box-sizing:border-box; }
-			.example { max-width:960px; margin:0 auto; padding:0; clear:both; }
-			.example > article, .example > aside { width:98%; padding:2%; }
-			.example-left > article, .example-left > aside { width:48%; padding:1%; float:left; }
-			.example-right > article, .example-right > aside { width:48%; padding:1%; float:right; }
-		</style>
-		<!--[if lte IE 9]>
-			<meta http-equiv="imagetoolbar" content="no"/>
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
-		<![endif]-->
+    <title>Redirect to demo</title>
+		<script>document.location.replace('./dist');</script>
 	</head>
 	<body>
-		<section class="example example-left">
-			<article>
-				<h2>Rotating Dial</h2>
-				<p>A dial for setting a rotation property.</p>
-				<p><a class="button downloadButton" href="http://github.com/WoollyMittens/useful-dial" target="_blank">Download (GitHub)</a></p>
-			</article>
-			<aside>
-
-				<!-- Cut below this -->
-				<style>@import url("./inc/css/useful-dial.css");</style>
-				<figure id="exampleDial" class="dial">
-					<img alt="" src="./inc/img/panorama_0.jpg"/>
-					<img alt="" src="./inc/img/panorama_1.jpg"/>
-					<img alt="" src="./inc/img/panorama_2.jpg"/>
-					<img alt="" src="./inc/img/panorama_3.jpg"/>
-					<img alt="" src="./inc/img/panorama_4.jpg"/>
-					<img alt="" src="./inc/img/panorama_5.jpg"/>
-					<img alt="" src="./inc/img/panorama_6.jpg"/>
-					<img alt="" src="./inc/img/panorama_7.jpg"/>
-					<img alt="" src="./inc/img/panorama_8.jpg"/>
-					<img alt="" src="./inc/img/panorama_9.jpg"/>
-					<img alt="" src="./inc/img/panorama_10.jpg"/>
-					<img alt="" src="./inc/img/panorama_11.jpg"/>
-					<img alt="" src="./inc/img/panorama_12.jpg"/>
-					<img alt="" src="./inc/img/panorama_13.jpg"/>
-					<img alt="" src="./inc/img/panorama_14.jpg"/>
-				</figure>
-				<script src="./inc/js/useful-dial.js"></script>
-				<script>
-				//<!--
-					// create new instances of the script
-					var exampleDial = new useful.Dial().init({
-						'element' : document.getElementById('exampleDial'),
-						'offset' : 3,
-						'invert' : false,
-						'radius' : 0.77,
-						'rotation' : 90,
-						'onrotate' : function (rotation) {}
-					});
-				//-->
-				</script>
-				<!-- Cut above this -->
-
-			</aside>
-		</section>
+		<a href="./dist">Start</a>
 	</body>
 </html>

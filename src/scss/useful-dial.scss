@@ -1,5 +1,5 @@
-@import "compass/css3";
-@import "compass/utilities";
+
+
 /*
 	dial
 */
@@ -10,29 +10,29 @@
 	position : relative;
 	width : 100%;
 	*, *:before, *:after {
-		@include box-sizing(border-box);
+		box-sizing: border-box;
 	}
 	img {
-		@include transition-property(opacity);
-		@include transition-duration(500ms);
+		/*transition-property: opacity;*/
+		/*transition-duration: 300ms;*/
 		height : auto;
 		left : 0;
 		top : 0;
 		width : 100%;
 		&.dial-active {
-			@include opacity(1);
+			opacity: 1;
 			position : relative;
 			z-index : 20;
 		}
 		&.dial-passive {
-			@include opacity(0);
-			@include transition-delay(500ms);
+			opacity: 0;
+			transition-delay: 300ms;
 			position : absolute;
 			z-index : 10;
 		}
 	}
 	.dial-face {
-		@include border-radius(50%);
+		border-radius: 50%;
 		background-color : rgba(0, 0, 0, 0.7);
 		background-color : #000\9;
 		border : solid 4px #fff;
@@ -44,7 +44,7 @@
 		width : 128px;
 		z-index : 30;
 		.dial-hand {
-			@include border-radius(50%);
+			border-radius: 50%;
 			background-color : #fff;
 			height : 24px;
 			left : 50%;
@@ -54,7 +54,7 @@
 			top : 0%;
 		}
 		.dial-hub {
-			@include border-radius(50%);
+			border-radius: 50%;
 			background-color : #fff;
 			height : 64px;
 			left : 50%;
