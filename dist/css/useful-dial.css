@@ -8,6 +8,7 @@
   position: relative;
   width: 100%; }
   .dial *, .dial *:before, .dial *:after {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box; }
   .dial img {
     /*transition-property: opacity;*/
@@ -22,6 +23,7 @@
       z-index: 20; }
     .dial img.dial-passive {
       opacity: 0;
+      -webkit-transition-delay: 300ms;
       transition-delay: 300ms;
       position: absolute;
       z-index: 10; }
