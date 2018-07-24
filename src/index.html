@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>useful-dial.js: Rotating Dial</title>
+		<title>dial.js: Rotating Dial</title>
 		<style>
 			html { font-family:Sans-Serif; font-size:75%; height:100%; }
 			body { _height:100%; line-height:180%; margin:0; min-height:100%; padding:1%; }
@@ -12,12 +12,6 @@
 			.example-left > article, .example-left > aside { width:48%; padding:1%; float:left; }
 			.example-right > article, .example-right > aside { width:48%; padding:1%; float:right; }
 		</style>
-		<!--[if lte IE 9]>
-			<meta http-equiv="imagetoolbar" content="no"/>
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
-		<![endif]-->
 	</head>
 	<body>
 		<section class="example example-left">
@@ -29,7 +23,7 @@
 			<aside>
 
 				<!-- Cut below this -->
-				<style>@import url("./css/useful-dial.css");</style>
+				<style>@import url("./css/dial.css");</style>
 				<figure id="exampleDial" class="dial">
 					<img alt="" src="./img/img_1350.jpg"/>
 					<img alt="" src="./img/img_1351.jpg"/>
@@ -51,11 +45,11 @@
 					<img alt="" src="./img/img_1367.jpg"/>
 					<img alt="" src="./img/img_1368.jpg"/>
 				</figure>
-				<script src="./js/useful-dial.js"></script>
+				<script src="./js/dial.js"></script>
 				<script>
 				//<!--
 					// create new instances of the script
-					var exampleDial = new useful.Dial().init({
+					var exampleDial = new Dial({
 						'element' : document.getElementById('exampleDial'),
 						'offset' : 0,
 						'invert' : false,

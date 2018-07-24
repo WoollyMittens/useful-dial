@@ -1,0 +1,61 @@
+/*
+	dial
+*/
+.dial {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%; }
+  .dial *, .dial *:before, .dial *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+  .dial img {
+    /*transition-property: opacity;*/
+    /*transition-duration: 300ms;*/
+    height: auto;
+    left: 0;
+    top: 0;
+    width: 100%; }
+    .dial img.dial-active {
+      opacity: 1;
+      position: relative;
+      z-index: 20; }
+    .dial img.dial-passive {
+      opacity: 0;
+      -webkit-transition-delay: 300ms;
+      transition-delay: 300ms;
+      position: absolute;
+      z-index: 10; }
+  .dial .dial-face {
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #000\9;
+    border: solid 4px #fff;
+    bottom: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    height: 128px;
+    width: 128px;
+    z-index: 30; }
+    .dial .dial-face .dial-hand {
+      border-radius: 50%;
+      background-color: #fff;
+      height: 24px;
+      left: 50%;
+      margin: -12px;
+      width: 24px;
+      position: absolute;
+      top: 0%; }
+    .dial .dial-face .dial-hub {
+      border-radius: 50%;
+      background-color: #fff;
+      height: 64px;
+      left: 50%;
+      margin: -32px;
+      position: absolute;
+      top: 50%;
+      width: 64px; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9tYWluLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7O0VBRUU7QUFDRjtFQUNDLFVBQVU7RUFDVixXQUFXO0VBQ1gsaUJBQWlCO0VBQ2pCLG1CQUFtQjtFQUNuQixZQUFZLEVBd0RaO0VBN0REO0lBT0UsK0JBQXNCO0lBQXRCLHVCQUFzQixFQUN0QjtFQVJGO0lBVUUsaUNBQWlDO0lBQ2pDLCtCQUErQjtJQUMvQixhQUFhO0lBQ2IsUUFBUTtJQUNSLE9BQU87SUFDUCxZQUFZLEVBWVo7SUEzQkY7TUFpQkcsV0FBVTtNQUNWLG1CQUFtQjtNQUNuQixZQUFZLEVBQ1o7SUFwQkg7TUFzQkcsV0FBVTtNQUNWLGdDQUF1QjtNQUF2Qix3QkFBdUI7TUFDdkIsbUJBQW1CO01BQ25CLFlBQVksRUFDWjtFQTFCSDtJQTZCRSxtQkFBa0I7SUFDbEIscUNBQXFDO0lBQ3JDLHlCQUF5QjtJQUN6Qix1QkFBdUI7SUFDdkIsYUFBYTtJQUNiLGdCQUFnQjtJQUNoQixtQkFBbUI7SUFDbkIsWUFBWTtJQUNaLGNBQWM7SUFDZCxhQUFhO0lBQ2IsWUFBWSxFQXFCWjtJQTVERjtNQXlDRyxtQkFBa0I7TUFDbEIsdUJBQXVCO01BQ3ZCLGFBQWE7TUFDYixVQUFVO01BQ1YsY0FBYztNQUNkLFlBQVk7TUFDWixtQkFBbUI7TUFDbkIsUUFBUSxFQUNSO0lBakRIO01BbURHLG1CQUFrQjtNQUNsQix1QkFBdUI7TUFDdkIsYUFBYTtNQUNiLFVBQVU7TUFDVixjQUFjO01BQ2QsbUJBQW1CO01BQ25CLFNBQVM7TUFDVCxZQUFZLEVBQ1oiLCJmaWxlIjoiZGlhbC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcblxuLypcblx0ZGlhbFxuKi9cbi5kaWFsIHtcblx0bWFyZ2luIDogMDtcblx0cGFkZGluZyA6IDA7XG5cdG92ZXJmbG93IDogaGlkZGVuO1xuXHRwb3NpdGlvbiA6IHJlbGF0aXZlO1xuXHR3aWR0aCA6IDEwMCU7XG5cdCosICo6YmVmb3JlLCAqOmFmdGVyIHtcblx0XHRib3gtc2l6aW5nOiBib3JkZXItYm94O1xuXHR9XG5cdGltZyB7XG5cdFx0Lyp0cmFuc2l0aW9uLXByb3BlcnR5OiBvcGFjaXR5OyovXG5cdFx0Lyp0cmFuc2l0aW9uLWR1cmF0aW9uOiAzMDBtczsqL1xuXHRcdGhlaWdodCA6IGF1dG87XG5cdFx0bGVmdCA6IDA7XG5cdFx0dG9wIDogMDtcblx0XHR3aWR0aCA6IDEwMCU7XG5cdFx0Ji5kaWFsLWFjdGl2ZSB7XG5cdFx0XHRvcGFjaXR5OiAxO1xuXHRcdFx0cG9zaXRpb24gOiByZWxhdGl2ZTtcblx0XHRcdHotaW5kZXggOiAyMDtcblx0XHR9XG5cdFx0Ji5kaWFsLXBhc3NpdmUge1xuXHRcdFx0b3BhY2l0eTogMDtcblx0XHRcdHRyYW5zaXRpb24tZGVsYXk6IDMwMG1zO1xuXHRcdFx0cG9zaXRpb24gOiBhYnNvbHV0ZTtcblx0XHRcdHotaW5kZXggOiAxMDtcblx0XHR9XG5cdH1cblx0LmRpYWwtZmFjZSB7XG5cdFx0Ym9yZGVyLXJhZGl1czogNTAlO1xuXHRcdGJhY2tncm91bmQtY29sb3IgOiByZ2JhKDAsIDAsIDAsIDAuNyk7XG5cdFx0YmFja2dyb3VuZC1jb2xvciA6ICMwMDBcXDk7XG5cdFx0Ym9yZGVyIDogc29saWQgNHB4ICNmZmY7XG5cdFx0Ym90dG9tIDogMTBweDtcblx0XHRjdXJzb3IgOiBwb2ludGVyO1xuXHRcdHBvc2l0aW9uIDogYWJzb2x1dGU7XG5cdFx0cmlnaHQgOiAxMHB4O1xuXHRcdGhlaWdodCA6IDEyOHB4O1xuXHRcdHdpZHRoIDogMTI4cHg7XG5cdFx0ei1pbmRleCA6IDMwO1xuXHRcdC5kaWFsLWhhbmQge1xuXHRcdFx0Ym9yZGVyLXJhZGl1czogNTAlO1xuXHRcdFx0YmFja2dyb3VuZC1jb2xvciA6ICNmZmY7XG5cdFx0XHRoZWlnaHQgOiAyNHB4O1xuXHRcdFx0bGVmdCA6IDUwJTtcblx0XHRcdG1hcmdpbiA6IC0xMnB4O1xuXHRcdFx0d2lkdGggOiAyNHB4O1xuXHRcdFx0cG9zaXRpb24gOiBhYnNvbHV0ZTtcblx0XHRcdHRvcCA6IDAlO1xuXHRcdH1cblx0XHQuZGlhbC1odWIge1xuXHRcdFx0Ym9yZGVyLXJhZGl1czogNTAlO1xuXHRcdFx0YmFja2dyb3VuZC1jb2xvciA6ICNmZmY7XG5cdFx0XHRoZWlnaHQgOiA2NHB4O1xuXHRcdFx0bGVmdCA6IDUwJTtcblx0XHRcdG1hcmdpbiA6IC0zMnB4O1xuXHRcdFx0cG9zaXRpb24gOiBhYnNvbHV0ZTtcblx0XHRcdHRvcCA6IDUwJTtcblx0XHRcdHdpZHRoIDogNjRweDtcblx0XHR9XG5cdH1cbn1cbiJdfQ== */

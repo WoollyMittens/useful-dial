@@ -1,20 +1,16 @@
 /*
 	Source:
-	van Creij, Maurice (2014). "useful.dial.js: A dial for setting a rotation property.", version 20141127, http://www.woollymittens.nl/.
+	van Creij, Maurice (2018). "dial.js: A dial for setting a rotation property.", http://www.woollymittens.nl/.
 
 	License:
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 */
 
-// create the global object if needed
-var useful = useful || {};
-
-// extend the global object
-useful.Dial = function () {
+// establish the class
+var Dial = function (config) {
 
 	// PROPERTIES
 
-	"use strict";
 	this.angle = null;
 	this.rotation = 0;
 	this.frames = null;
@@ -81,13 +77,13 @@ useful.Dial = function () {
 		this.face.appendChild(this.hand);
 		this.element.appendChild(this.face);
 		// add the mouse event handlers
-		this.face.addEventListener('mousedown', this.onStart());
-		this.face.addEventListener('mousemove', this.onMove(this.face));
-		window.addEventListener('mouseup', this.onEnd());
+		this.face.addEventListener('mousedown', this.onStart.bind(this));
+		this.face.addEventListener('mousemove', this.onMove.bind(this, this.face));
+		window.addEventListener('mouseup', this.onEnd.bind(this));
 		// add the touch event handlers
-		this.face.addEventListener('touchstart', this.onStart());
-		this.face.addEventListener('touchmove', this.onMove(this.face));
-		window.addEventListener('touchend', this.onEnd());
+		this.face.addEventListener('touchstart', this.onStart.bind(this));
+		this.face.addEventListener('touchmove', this.onMove.bind(this, this.face));
+		window.addEventListener('touchend', this.onEnd.bind(this));
 	};
 
 	this.redrawDial = function () {
@@ -99,49 +95,7 @@ useful.Dial = function () {
 		this.hand.style.top = vertical + '%';
 	};
 
-	// EVENTS
-
-	this.onStart = function () {
-		var context = this;
-		return function (event) {
-			// note the start of the interaction
-			context.config.interaction = true;
-			event.preventDefault();
-		};
-	};
-
-	this.onMove = function (target) {
-		var context = this;
-		return function (event) {
-			var interaction = {}, center = {}, scrolled = {};
-			// if there's interaction
-			if (context.config.interaction) {
-				// measure the positions
-				interaction = useful.positions.cursor(event, target);
-				scrolled = useful.positions.document();
-				center.x = target.offsetWidth / 2;
-				center.y = target.offsetHeight / 2;
-				// determine the relative rotation from the position
-				context.angle = Math.atan2((interaction.y - center.y), (interaction.x - center.x));
-				context.rotation = (context.angle) ? context.angle * 180 / Math.PI : 270;
-				context.rotation = (context.rotation < 0) ? context.rotation + 360 : context.rotation;
-				// cancel any dragging shenanigans
-				event.preventDefault();
-				// redraw everything
-				context.update();
-			}
-		};
-	};
-
-	this.onEnd = function () {
-		var context = this;
-		return function (event) {
-			// note the end of the interaction
-			context.config.interaction = false;
-		};
-	};
-
-	// EXTERNAL
+	// PUBLIC
 
 	this.rotate = function (rotation) {
 		// override the rotation
@@ -150,9 +104,47 @@ useful.Dial = function () {
 		// trigger a redraw
 		this.update();
 	};
+
+	// EVENTS
+
+	this.onStart = function (evt) {
+		var context = this;
+		// cancel the click
+		evt.preventDefault();
+		// note the start of the interaction
+		this.config.interaction = true;
+	};
+
+	this.onMove = function (target, evt) {
+		var interaction = {}, center = {}, scrolled = {};
+		// if there's interaction
+		if (this.config.interaction) {
+			// measure the positions
+			interaction = positions.cursor(evt, target);
+			scrolled = positions.document();
+			center.x = target.offsetWidth / 2;
+			center.y = target.offsetHeight / 2;
+			// determine the relative rotation from the position
+			this.angle = Math.atan2((interaction.y - center.y), (interaction.x - center.x));
+			this.rotation = (this.angle) ? this.angle * 180 / Math.PI : 270;
+			this.rotation = (this.rotation < 0) ? this.rotation + 360 : this.rotation;
+			// cancel any dragging shenanigans
+			evt.preventDefault();
+			// redraw everything
+			window.requestAnimationFrame(this.update.bind(this));
+		}
+	};
+
+	this.onEnd = function (evt) {
+		// note the end of the interaction
+		this.config.interaction = false;
+	};
+
+	this.init(config);
+
 };
 
 // return as a require.js module
 if (typeof module !== 'undefined') {
-	exports = module.exports = useful.Dial;
+	exports = module.exports = Dial;
 }
