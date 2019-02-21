@@ -145,6 +145,5 @@ var Dial = function (config) {
 };
 
 // return as a require.js module
-if (typeof module !== 'undefined') {
-	exports = module.exports = Dial;
-}
+if (typeof define != 'undefined') define(['dial'], function () { return Dial });
+if (typeof module != 'undefined') module.exports = Dial;
