@@ -15,7 +15,26 @@ The stylesheet is best included in the header of the document.
 This include can be added to the header or placed inline before the script is invoked.
 
 ```html
-<script src="./js/dial.js"></script>
+<script src="lib/positions.js"></script>
+<script src="js/dial.js"></script>
+```
+
+Or use [Require.js](https://requirejs.org/).
+
+```js
+requirejs([
+	'lib/positions.js',
+	'js/dial.js'
+], function(positions, Dial) {
+	...
+});
+```
+
+Or import into an MVC framework.
+
+```js
+var positions = require('lib/positions.js');
+var Dial = require('js/dial.js');
 ```
 
 ## How to start the script
